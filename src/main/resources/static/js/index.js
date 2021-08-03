@@ -26,3 +26,11 @@ $.get("/user", function (data) {
     $(".unauthenticated").hide()
     $(".authenticated").show()
 });
+
+$.get("/error", function(data) {
+    if (data) {
+        $(".error").html(data);
+    } else {
+        $(".error").html('');
+    }
+});
