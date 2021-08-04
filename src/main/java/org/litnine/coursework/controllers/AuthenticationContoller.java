@@ -37,11 +37,6 @@ public class AuthenticationContoller {
             return "register_new";
         }
 
-        if (!userDto.getPassword().equals(userDto.getRepeatPassword())) {
-            model.put("message", "Passwords don't match.");
-            return "register_new";
-        }
-
         userService.createUser(userDto);
 
         return "redirect:/login";
