@@ -16,6 +16,8 @@
 
 <th:block th:insert="frags.html::bts_body(~{::div}, 'User table page')">
     <div sec:authorize="!isAuthenticated()">
+        <span th:text="#{index.logged_in_as}">No props loaded:</span>
+
         <div align="center">
             <p>Unauthorized users don't have access to this page. <br>You can either sign in or sign up to access the
                 website contents.</p>
@@ -28,6 +30,7 @@
 
     <div sec:authorize="isAuthenticated()">
         <span th:text="#{index.logged_in_as}">No props loaded:</span> <span id="user"></span>
+
         <div>
             <button onClick="logout()" class="btn btn-primary">Logout</button>
         </div>
