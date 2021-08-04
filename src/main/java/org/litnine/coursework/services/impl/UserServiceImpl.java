@@ -23,16 +23,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUser(UserDto userDto) {
-        User user = new User();
-        user.setUsername(userDto.getUsername());
-        user.setName(userDto.getName());
-        user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        User user = mapUserDtoToUser(userDto, new User());
         user.setLanguage("en-EN");
         user.setIsDarkThemeEnabled(false);
-        user.setEmail(userDto.getEmail());
         user.setActive(true);
         user.setRoles(Collections.singleton(Role.USER));
         userRepository.save(user);
+    }
+
+    private User mapUserDtoToUser(UserDto userDto, User user){
+        user.setUsername(userDto.getUsername());
+        user.setName(userDto.getName());
+        user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        user.setEmail(userDto.getEmail());
+        return user;
     }
 
     @Override
