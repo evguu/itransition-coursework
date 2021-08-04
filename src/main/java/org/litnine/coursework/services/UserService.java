@@ -1,20 +1,12 @@
 package org.litnine.coursework.services;
 
-import org.litnine.coursework.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.litnine.coursework.domain.User;
+import org.litnine.coursework.domain.UserDto;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService implements UserDetailsService {
-    @Autowired
-    UserRepository userRepository;
+public interface UserService extends UserDetailsService {
+    void createUser(UserDto userDto);
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
-    }
+    User getUserByUsername(String username);
 }
 
