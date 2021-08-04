@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -24,8 +23,8 @@ public class User implements UserDetails {
 
     private String name;
     private String email;
-    private Date registrationDate;
-    private Date lastLoginDate;
+    private Boolean isDarkThemeEnabled;
+    private String language;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "usr_role", joinColumns = @JoinColumn(name = "usr_id"))

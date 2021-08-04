@@ -1,38 +1,39 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
 <head>
+    <th:block th:insert="frags.html::bts_head"></th:block>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>Demo</title>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css"/>
-
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="/webjars/js-cookie/js.cookie.js"></script>
+    <title>Index page</title>
+    <link rel="stylesheet" type="text/css" href="/css/index.css"/>
 </head>
+
 <body>
-Automatic deploy test
 
-<div class="container text-danger error"></div>
-
-<div class="container unauthenticated">
-    With GitHub: <a href="/oauth2/authorization/github">click here</a>
-    <br/>
-    With Google: <a href="/oauth2/authorization/google">click here</a>
-</div>
-
-<div class="container authenticated">
-    Logged in as: <span id="user"></span>
-    <div>
-        <button onClick="logout()" class="btn btn-primary">Logout</button>
+<th:block th:insert="frags.html::bts_body(~{::div}, 'User table page')">
+    <div sec:authorize="!isAuthenticated()">
+        <div align="center">
+            <p>Unauthorized users don't have access to this page. <br>You can either sign in or sign up to access the
+                website contents.</p>
+            <a th:href="@{/oauth2/authorization/github}" class="btn btn-lg btn-outline-primary">Sign in with Github</a>
+            <a th:href="@{/oauth2/authorization/google}" class="btn btn-lg btn-outline-primary">Sign in with Google</a>
+            <a th:href="@{/login}" class="btn btn-lg btn-outline-primary">Sign in</a>
+            <a th:href="@{/register}" class="btn btn-lg btn-outline-primary">Sign up</a>
+        </div>
     </div>
-</div>
+
+    <div sec:authorize="isAuthenticated()">
+        <span th:text="#{index.logged_in_as}">No props loaded:</span> <span id="user"></span>
+        <div>
+            <button onClick="logout()" class="btn btn-primary">Logout</button>
+        </div>
+    </div>
+</th:block>
 
 <script type="text/javascript" src="/js/index.js"></script>
-
 </body>
 </html>

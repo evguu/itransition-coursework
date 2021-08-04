@@ -15,16 +15,13 @@ $.ajaxSetup({
 let logout = function() {
     $.post("/logout", function() {
         $("#user").html('');
-        $(".unauthenticated").show();
-        $(".authenticated").hide();
     })
+    window.location.replace("/");
     return true;
 }
 
 $.get("/user", function (data) {
     $("#user").html(data.name);
-    $(".unauthenticated").hide()
-    $(".authenticated").show()
 });
 
 $.get("/error", function(data) {
