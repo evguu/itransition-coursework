@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean hasUserWithUsername(String username) {
-        return getUserByUsername(username) == null;
+        return getUserByUsername(username) != null;
     }
 
     @Override
