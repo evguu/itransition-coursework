@@ -6,6 +6,7 @@ import org.litnine.coursework.domain.UserInfo;
 import org.litnine.coursework.repositories.UserRepository;
 
 import java.util.Collections;
+import java.util.Optional;
 
 public class Utils {
     public static void processUserInfo(UserInfo userInfo, UserRepository userRepository) {

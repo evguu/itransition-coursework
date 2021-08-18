@@ -16,24 +16,12 @@ import java.util.Date;
 @Table(name = "item")
 @Data
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String title;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false)
-    @NotNull
-    @CreatedDate
-    private Date createdAt;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    @LastModifiedDate
-    private Date updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

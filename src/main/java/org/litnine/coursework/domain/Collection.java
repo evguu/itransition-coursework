@@ -16,7 +16,6 @@ import java.util.Date;
 @Table(name = "collection")
 @Data
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
 public class Collection {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,17 +24,6 @@ public class Collection {
     private String title;
     private String description;
     private String imageURL;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(updatable = false)
-    @NotNull
-    @CreatedDate
-    private Date createdAt;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @NotNull
-    @LastModifiedDate
-    private Date updatedAt;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
