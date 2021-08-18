@@ -1,0 +1,58 @@
+package org.litnine.coursework.domain;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+
+@Entity
+@Table(name = "item")
+@Data
+@NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
+public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String title;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(updatable = false)
+    @NotNull
+    @CreatedDate
+    private Date createdAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @NotNull
+    @LastModifiedDate
+    private Date updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    Collection collection;
+
+    private String int1_content;
+    private String int2_content;
+    private String int3_content;
+    private String text1_content;
+    private String text2_content;
+    private String text3_content;
+    private String md1_content;
+    private String md2_content;
+    private String md3_content;
+    private String date1_content;
+    private String date2_content;
+    private String date3_content;
+    private String bool1_content;
+    private String bool2_content;
+    private String bool3_content;
+
+}
