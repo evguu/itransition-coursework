@@ -3,22 +3,21 @@ package org.litnine.coursework.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GoogleUserInfo implements UserInfo{
+public class GithubUserInfo implements UserInfo{
 
     private final Map<String, Object> attributes;
 
-    public GoogleUserInfo(Map<String, Object> attributes) {
+    public GithubUserInfo(Map<String, Object> attributes) {
         this.attributes = attributes;
     }
 
     @Override
     public String getId() {
-        return "google-" + attributes.get("sub");
+        return "github-" + attributes.get("id");
     }
 
     @Override
     public String getName() {
         return (String) attributes.get("name");
     }
-
 }
