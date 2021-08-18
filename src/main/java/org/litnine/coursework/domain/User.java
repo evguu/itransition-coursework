@@ -13,15 +13,10 @@ import java.util.Set;
 @Table(name = "usr")
 @Data
 @NoArgsConstructor
-public class User implements UserDetails {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String username;
-    private String password;
+public class User{
     private Boolean active;
-
     private String name;
+    @Id
     private String email;
     private Boolean isDarkThemeEnabled;
     private String language;
@@ -30,29 +25,4 @@ public class User implements UserDetails {
     @CollectionTable(name = "usr_role", joinColumns = @JoinColumn(name = "usr_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return active;
-    }
 }
