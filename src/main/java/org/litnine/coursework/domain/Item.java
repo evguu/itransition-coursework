@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "item")
@@ -22,20 +23,20 @@ public class Item {
     @OnDelete(action = OnDeleteAction.CASCADE)
     Collection collection;
 
-    private String int1_content;
-    private String int2_content;
-    private String int3_content;
+    private Integer int1_content;
+    private Integer int2_content;
+    private Integer int3_content;
     private String text1_content;
     private String text2_content;
     private String text3_content;
     private String md1_content;
     private String md2_content;
     private String md3_content;
-    private String date1_content;
-    private String date2_content;
-    private String date3_content;
-    private String bool1_content;
-    private String bool2_content;
-    private String bool3_content;
+    private Date date1_content;
+    private Date date2_content;
+    private Date date3_content;
+    private Boolean bool1_content;
+    private Boolean bool2_content;
+    private Boolean bool3_content;
 
 }

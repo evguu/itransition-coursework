@@ -2,7 +2,9 @@ package org.litnine.coursework.controllers;
 
 import lombok.SneakyThrows;
 import org.litnine.coursework.domain.Collection;
+import org.litnine.coursework.domain.Item;
 import org.litnine.coursework.repositories.CollectionRepository;
+import org.litnine.coursework.repositories.ItemRepository;
 import org.litnine.coursework.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,9 @@ public class TestDataController {
 
     @Autowired
     CollectionRepository collectionRepository;
+
+    @Autowired
+    ItemRepository itemRepository;
 
     @Autowired
     UserService userService;
@@ -31,7 +36,11 @@ public class TestDataController {
         collection.setUser(userService.getActiveUser());
         collectionRepository.save(collection);
 
-
+        Item item = new Item();
+        item.setCollection(collection);
+        item.setTitle("Item 1");
+        item.setBool1_content(false);
+        itemRepository.save(item);
 
         return "redirect:";
     }
