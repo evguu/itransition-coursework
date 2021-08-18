@@ -1,6 +1,7 @@
 package org.litnine.coursework.services;
 
-import org.litnine.coursework.domain.*;
+import org.litnine.coursework.domain.GoogleUserInfo;
+import org.litnine.coursework.domain.UserInfo;
 import org.litnine.coursework.repositories.UserRepository;
 import org.litnine.coursework.services.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;

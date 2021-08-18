@@ -1,6 +1,7 @@
 package org.litnine.coursework.services;
 
-import org.litnine.coursework.domain.*;
+import org.litnine.coursework.domain.GithubUserInfo;
+import org.litnine.coursework.domain.UserInfo;
 import org.litnine.coursework.repositories.UserRepository;
 import org.litnine.coursework.services.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,6 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class GithubUserService extends DefaultOAuth2UserService {

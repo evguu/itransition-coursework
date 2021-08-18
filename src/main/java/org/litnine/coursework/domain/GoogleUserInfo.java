@@ -1,6 +1,5 @@
 package org.litnine.coursework.domain;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class GoogleUserInfo implements UserInfo{
