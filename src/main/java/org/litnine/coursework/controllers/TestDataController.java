@@ -5,6 +5,8 @@ import org.litnine.coursework.domain.Collection;
 import org.litnine.coursework.domain.User;
 import org.litnine.coursework.repositories.CollectionRepository;
 import org.litnine.coursework.repositories.UserRepository;
+import org.litnine.coursework.services.UserService;
+import org.litnine.coursework.services.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -25,20 +27,15 @@ public class TestDataController {
     CollectionRepository collectionRepository;
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
 
     @SneakyThrows
     @GetMapping("/gentest")
     public String gentest() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Field field = authentication.getClass().getDeclaredField("authorizedClientRegistrationId");
-        field.setAccessible(true);
-        String id = field.get(authentication) + "-" + authentication.getName();
-
         Collection collection = new Collection();
         collection.setTitle("Test collection");
 
-        collection.setUser(userRepository.getById(id));
+        collection.setUser(userService.getActiveUser());
         collectionRepository.save(collection);
 
         return "redirect:";
