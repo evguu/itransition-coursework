@@ -14,10 +14,10 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class User{
+    @Id
+    private String id;
     private Boolean active;
     private String name;
-    @Id
-    private String email;
     private Boolean isDarkThemeEnabled;
     private String language;
 

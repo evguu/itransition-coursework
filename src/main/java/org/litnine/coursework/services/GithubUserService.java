@@ -35,14 +35,14 @@ public class GithubUserService extends DefaultOAuth2UserService {
     }
 
     private OAuth2User processOAuth2User(OAuth2UserRequest userRequest, OAuth2User oAuth2User) {
-        GoogleUserInfo googleUserInfo = new GoogleUserInfo(oAuth2User.getAttributes());
+        GoogleUserInfo googleUserInfo = GoogleUserInfo.fromGithubAttributes(oAuth2User.getAttributes());
 
         System.out.println("GHub allowed to process some tasty data!!");
 
-        Optional<User> userOptional = userRepository.findByEmail(googleUserInfo.getEmail());
+        Optional<User> userOptional = userRepository.findById(googleUserInfo.getId());
         if (userOptional.isEmpty()) {
             User user = new User();
-            user.setEmail(googleUserInfo.getEmail());
+            user.setId(googleUserInfo.getId());
             user.setName(googleUserInfo.getName());
             user.setLanguage("en-EN");
             user.setIsDarkThemeEnabled(false);
