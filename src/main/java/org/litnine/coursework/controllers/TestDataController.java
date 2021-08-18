@@ -22,9 +22,16 @@ public class TestDataController {
     public String gentest() {
         Collection collection = new Collection();
         collection.setTitle("Test collection");
+        collection.setImageURL("https://www.economist.com/sites/default/files/20170708_BLP521.jpg");
+        collection.setDescription("Never gonna give you up");
+
+        collection.setBool1_visible(true);
+        collection.setBool1_title("Will I give you up?");
 
         collection.setUser(userService.getActiveUser());
         collectionRepository.save(collection);
+
+
 
         return "redirect:";
     }

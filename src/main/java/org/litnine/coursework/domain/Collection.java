@@ -24,21 +24,21 @@ public class Collection {
     @OnDelete(action = OnDeleteAction.CASCADE)
     User user;
 
-    private Boolean int1_visible;
-    private Boolean int2_visible;
-    private Boolean int3_visible;
-    private Boolean text1_visible;
-    private Boolean text2_visible;
-    private Boolean text3_visible;
-    private Boolean md1_visible;
-    private Boolean md2_visible;
-    private Boolean md3_visible;
-    private Boolean date1_visible;
-    private Boolean date2_visible;
-    private Boolean date3_visible;
-    private Boolean bool1_visible;
-    private Boolean bool2_visible;
-    private Boolean bool3_visible;
+    private Boolean int1_visible = false;
+    private Boolean int2_visible = false;
+    private Boolean int3_visible = false;
+    private Boolean text1_visible = false;
+    private Boolean text2_visible = false;
+    private Boolean text3_visible = false;
+    private Boolean md1_visible = false;
+    private Boolean md2_visible = false;
+    private Boolean md3_visible = false;
+    private Boolean date1_visible = false;
+    private Boolean date2_visible = false;
+    private Boolean date3_visible = false;
+    private Boolean bool1_visible = false;
+    private Boolean bool2_visible = false;
+    private Boolean bool3_visible = false;
 
     private String int1_title;
     private String int2_title;
