@@ -2,6 +2,8 @@ package org.litnine.coursework.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -34,6 +36,10 @@ public class Collection {
     @NotNull
     @LastModifiedDate
     private Date updatedAt;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    User user;
 
     private Boolean int1_visible;
     private Boolean int2_visible;
