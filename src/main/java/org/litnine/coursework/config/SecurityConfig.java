@@ -17,7 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         SimpleUrlAuthenticationFailureHandler handler = new SimpleUrlAuthenticationFailureHandler("/");
 
         http
-                .authorizeRequests().antMatchers("/", "/error", "/webjars/**", "/js/**", "/css/**",
+                .authorizeRequests()
+                .antMatchers("/api/users/{userId}/**")
+                .access("hasRole('ROLE_USER') and @userSecurity.hasUserId(#userId) or hasRole('ROLE_ADMIN')")
+                .antMatchers("/", "/error", "/webjars/**", "/js/**", "/css/**",
                 "/login", "/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
