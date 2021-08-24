@@ -14,23 +14,23 @@
 
 <body>
 
-<th:block th:insert="frags.html::bts_body(~{::div}, 'User table page')">
+<th:block th:insert="frags.html::bts_body(~{::div}, #{index.main_page_title})">
     <div sec:authorize="!isAuthenticated()">
-        <span th:text="#{index.logged_in_as}">No props loaded:</span>
-
         <div align="center">
-            <p>Unauthorized users don't have access to this page. <br>You can either sign in or sign up to access the
-                website contents.</p>
-            <a th:href="@{/oauth2/authorization/github}" class="btn btn-lg btn-outline-primary">Sign in with Github</a>
-            <a th:href="@{/oauth2/authorization/google}" class="btn btn-lg btn-outline-primary">Sign in with Google</a>
+            <p th:text="#{index.auth_required}"></p>
+            <p th:text="#{index.please_sign_in}"></p>
+            <a th:text="#{index.auth_github}"
+            th:href="@{/oauth2/authorization/github}" class="btn btn-lg btn-outline-primary"></a>
+            <a th:text="#{index.auth_google}"
+            th:href="@{/oauth2/authorization/google}" class="btn btn-lg btn-outline-primary"></a>
         </div>
     </div>
 
     <div sec:authorize="isAuthenticated()">
-        <span th:text="#{index.logged_in_as}">No props loaded:</span> <span id="user"></span>
+        <span th:text="#{index.logged_in_as}"></span> <span id="user"></span>
 
         <div>
-            <button onClick="logout()" class="btn btn-primary">Logout</button>
+            <button th:text="#{index.logout}" onClick="logout()" class="btn btn-primary"></button>
         </div>
     </div>
 </th:block>
