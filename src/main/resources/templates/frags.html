@@ -12,19 +12,19 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" th:href="@{/}">Collections</a>
+        <a class="navbar-brand" th:href="@{/}" th:text="#{index.webname}"></a>
         <th:block sec:authorize="isAuthenticated()">
             <p class="navbar-text">
                 @<span sec:authentication="name"></span>
             </p>
 
             <form th:action="@{/logout}" method="post">
-                <input class="button btn btn-outline-primary" type="submit" value="Log out"/>
+                <input class="button btn btn-outline-primary" type="submit" th:value="#{index.logout}"/>
             </form>
 
         </th:block>
         <th:block sec:authorize="!isAuthenticated()">
-            <p class="navbar-text">Not authorized.</p>
+            <p class="navbar-text" th:text="#{index.not_authorized}"></p>
         </th:block>
     </div>
 </nav>
